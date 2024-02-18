@@ -4,10 +4,11 @@
     "description": "My second Node.js app",
     "main": "app.js",
     "scripts": {
-      "start": "node app.js"
+        "start": "node app.js",
+        "test": "jest app.js"
     },
     "dependencies": {
-      "express": "^4.17.1"
+        "express": "^4.17.1",
+        "jest": "^29.7.0"
     }
-  }
-  
+}
