@@ -14,8 +14,8 @@ pipeline {
         }
         stage('Deploy') {
             steps {
-                sh 'docker build -t my-node-app .'
-                sh 'docker run -p 80:80 my-node-app'
+                sh 'docker build -t myapp .'
+                sh 'docker run -p 3000:3000 myapp'
             }
         }
     }

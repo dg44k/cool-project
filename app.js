@@ -7,8 +7,8 @@ app.get('/', (req, res) => res.send('Hello World!'))
 
 app.listen(port, () => console.log(`App listening at http://localhost:${port}`))
 
-function sum(a, b) {
-	return a + b
+function subtraction(a, b) {
+	return a - b;
 }
 
-module.exports = sum;
+module.exports = subtraction;
