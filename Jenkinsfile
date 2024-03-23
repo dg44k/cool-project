@@ -1,8 +1,8 @@
 pipeline {
     agent any
-    
+    tools {nodejs "NodeJsKursach"}
     stages {
-        stage('Build') {
+        stage('Install dependencies') {
             steps {
                 sh 'npm install'
             }
