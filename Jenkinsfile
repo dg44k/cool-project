@@ -17,16 +17,7 @@ pipeline {
         stage('Deploy') {
             steps {
                 sh 'docker build -t myapp .'
-                sh 'docker run -p 3001:3001 myapp'
             }
-        }
-    }
-    post {
-        success {
-            echo 'Pipeline successfully completed!'
-        }
-        failure {
-            echo 'Pipeline failed!'
         }
     }
 }
