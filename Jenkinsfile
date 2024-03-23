@@ -17,7 +17,7 @@ pipeline {
         stage('Deploy') {
             steps {
                 sh 'docker build -t myapp .'
-                sh 'docker run -p 3000:3000 myapp'
+                sh 'docker run -p 3001:3001 myapp'
             }
         }
     }
