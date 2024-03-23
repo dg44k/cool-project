@@ -24,11 +24,9 @@ pipeline {
     post {
         success {
             echo 'Pipeline successfully completed!'
-            currentBuild.result = 'SUCCESS'
         }
         failure {
             echo 'Pipeline failed!'
-            currentBuild.result = 'FAILURE'
         }
     }
 }
