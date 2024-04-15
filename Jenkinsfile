@@ -1,7 +1,7 @@
 pipeline {
     agent {
         label 'MeRunner'
-    }
+    } 
     tools {nodejs "NodeJsKursach"}
     stages {
         stage('Install dependencies') {
