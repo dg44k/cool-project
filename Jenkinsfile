@@ -3,7 +3,7 @@ pipeline {
         label 'MeRunner'
     } 
     tools {nodejs "NodeJsKursach"}
-    stages {
+    stages { 
         stage('Install dependencies') {
             steps {
                 sh 'npm install'
