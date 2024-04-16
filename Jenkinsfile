@@ -6,7 +6,7 @@ pipeline {
             steps {
 		sh 'docker rm --force mycontainer'
                 sh 'docker build -t myapp .'
-                sh 'docker run -d -p 3000:3000 --name mycontainer myapp'
+                sh 'docker run -d -p 3001:3001 --name mycontainer myapp'
             }
         }
     }
