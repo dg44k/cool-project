@@ -2,12 +2,20 @@ pipeline {
     agent any
     
     stages {
-         stage('Deploy') {
+         stage('Clear container') {
             steps {
 		sh 'docker rm --force mycontainer'
-                sh 'docker build -t myapp .'
-                sh 'docker run -d -p 3001:3001 --name mycontainer myapp'
             }
         }
+	stage('Build') {
+	    steps {
+		sh 'docker build -t myapp .'
+	    }
+	}
+	 stage('Deploy') {
+	    steps {
+		sh 'docker run -d -p 3001:3001 --name mycontainer myapp'
+	    }
+	}
     }
 }
