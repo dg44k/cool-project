@@ -16,6 +16,7 @@ pipeline {
 	    steps {
 	        script {
 	            docker.withRegistry('https://registry.hub.docker.com', 'dockerhub-dg-cred') {
+			docker.image("dg44k/myapp").push("latest")
 	            }
 	        }
 	    }
