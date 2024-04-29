@@ -32,8 +32,7 @@ pipeline {
                 sh 'docker rmi dg44k/myapp:latest'
             }
         }
-    }
-	 stage('Deploy') {
+	stage('Deploy') {
 	    steps {
 		sh 'docker run -d -p 3001:3001 --name mycontainer myapp'
 	    }
