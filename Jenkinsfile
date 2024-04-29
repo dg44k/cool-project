@@ -23,7 +23,7 @@ pipeline {
 	stage('Push Docker Image') {
 	    steps {
 	        script {
-	            docker.image('myapp').push('dg44k/myapp')
+	            docker.image('myapp:latest').push('dg44k/myapp')
 	        }
 	    }
 	}
