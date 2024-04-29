@@ -9,15 +9,14 @@ pipeline {
         }
 	stage('Build') {
 	    steps {
-		sh 'docker build -t myapp .'
+		sh 'docker build -t myapp:1.0 .'
 	    }
 	}
 	stage('Docker Hub Login') {
 	    steps {
 	        script {
 	            docker.withRegistry('https://registry.hub.docker.com', 'dockerhub-dg-cred') {
-			sh "docker tag dg44k/myapp dg44k/myapp:latest"
-			docker.image("dg44k/myapp:latest").push()
+			docker.image("dg44k/myapp:1.0").push()
 	            }
 	        }
 	    }
@@ -25,13 +24,13 @@ pipeline {
 	stage('Push Docker Image') {
 	    steps {
 	        script {
-	            docker.image('myapp:latest').push('dg44k/myapp:1.0.0')
+	            docker.image('myapp:1.0').push('dg44k/myapp:1.0')
 	        }
 	    }
 	}
 	stage('Deploy') {
 	    steps {
-		sh 'docker run -d -p 3001:3001 --name mycontainer myapp'
+		sh 'docker run -d -p 3001:3001 --name mycontainer myapp:1.0'
 	    }
 	}
     }
