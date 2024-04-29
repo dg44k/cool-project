@@ -12,6 +12,27 @@ pipeline {
 		sh 'docker build -t myapp .'
 	    }
 	}
+	stage('Docker Hub Login') {
+	    steps {
+	        script {
+	            docker.withRegistry('https://registry.hub.docker.com', 'dockerhub-dg-cred') {
+	            }
+	        }
+	    }
+	}
+	stage('Push Docker Image') {
+	    steps {
+	        script {
+	            docker.image('myapp:latest').push('dg44k/myapp:latest')
+	        }
+	    }
+	}
+        stage('Delete docker image locally') {
+            steps{
+                sh 'docker rmi dg44k/myapp:latest'
+            }
+        }
+    }
 	 stage('Deploy') {
 	    steps {
 		sh 'docker run -d -p 3001:3001 --name mycontainer myapp'
