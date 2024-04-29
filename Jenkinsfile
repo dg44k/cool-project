@@ -16,7 +16,7 @@ pipeline {
 	    steps {
 	        script {
 	            docker.withRegistry('https://registry.hub.docker.com', 'dockerhub-dg-cred') {
-			docker.tag("dg44k/myapp", "dg44k/myapp:latest")
+			sh "docker tag dg44k/myapp dg44k/myapp:latest"
 			docker.image("dg44k/myapp:latest").push()
 	            }
 	        }
