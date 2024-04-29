@@ -23,15 +23,10 @@ pipeline {
 	stage('Push Docker Image') {
 	    steps {
 	        script {
-	            docker.image('myapp:latest').push('dg44k/myapp')
+	            docker.image('myapp').push('dg44k/myapp')
 	        }
 	    }
 	}
-        stage('Delete docker image locally') {
-            steps{
-                sh 'docker rmi dg44k/myapp'
-            }
-        }
 	stage('Deploy') {
 	    steps {
 		sh 'docker run -d -p 3001:3001 --name mycontainer myapp'
