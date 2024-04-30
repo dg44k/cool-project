@@ -20,15 +20,10 @@ pipeline {
                 }
             } 
         }
-	// stage('Build') {
-	//     steps {
-	// 	sh 'docker build -t myapp:1.0 .'
-	//     }
-	// }
 	stage('Push Docker Image') {
 	    steps {
 	        script {
-	            docker.withRegistry('https://registry.hub.docker.com', registryCredential) {
+	            docker.withRegistry('', registryCredential) {
 			dockerImage.push() 
 	            }
 	        }
