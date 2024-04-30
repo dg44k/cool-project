@@ -12,19 +12,12 @@ pipeline {
 		sh 'docker build -t myapp:1.0 .'
 	    }
 	}
-	stage('Docker Hub Login') {
+	stage('Push Docker Image') {
 	    steps {
 	        script {
 	            docker.withRegistry('https://registry.hub.docker.com', 'dockerhub-dg-cred') {
 			docker.image("dg44k/myapp:1.0").push()
 	            }
-	        }
-	    }
-	}
-	stage('Push Docker Image') {
-	    steps {
-	        script {
-	            docker.image('myapp:1.0').push('dg44k/myapp:1.0')
 	        }
 	    }
 	}
