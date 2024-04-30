@@ -16,7 +16,7 @@ pipeline {
 	    steps {
 	        script {
 	            docker.withRegistry('https://registry.hub.docker.com', 'dockerhub-dg-cred') {
-			docker push dg44k/myapp:1.0
+			sh "docker push dg44k/myapp:1.0"
 	            }
 	        }
 	    }
