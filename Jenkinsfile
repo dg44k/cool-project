@@ -29,9 +29,14 @@ pipeline {
 	        }
 	    }
 	}
+	stage('Cleaning up') { 
+            steps { 
+                sh "docker rmi $registry:$BUILD_NUMBER" 
+            }
+        }
 	stage('Deploy') {
 	    steps {
-		sh 'docker run -d -p 3001:3001 --name mycontainer myapp:$BUILD_NUMBER'
+		sh 'docker run -d -p 3001:3001 --name mycontainer dg44k/myapp:$BUILD_NUMBER'
 	    }
 	}
     }
